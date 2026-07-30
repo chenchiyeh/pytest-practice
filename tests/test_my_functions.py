@@ -1,5 +1,6 @@
 import pytest
 import source.my_functions as my_functions
+import time
 
 
 def test_add():
@@ -19,4 +20,19 @@ def test_divide_zero():
     #put in the expected error case to pass
     with pytest.raises(ValueError):
         result = my_functions.divide(10,0)
-    
+
+
+#slow tag 
+@pytest.mark.slow
+def test_very_slow():
+    time.sleep(5)
+    result = my_functions.divide(10,2)
+    assert result == 5
+
+@pytest.mark.skip(reason = "This feature is currently broken")
+def test_add():
+    assert my_functions.add(1,2) == 3
+
+@pytest.mark.xfail(reason = "We know we can not divide by 0")
+def test_divide_zero_broken():
+    my_functions.divide(4,0)
