@@ -25,6 +25,7 @@ class TestCircle:
 
         assert result == expected
 
-    
-        
+    #using my_rectangle fixture from conftest.py
+    def test_not_same_area_rectangle(self, my_rectangle):
+        assert self.circle.area() != my_rectangle.area()
     
