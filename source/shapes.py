@@ -23,3 +23,25 @@ class Circle(Shape):
 
     def perimeter(self):
         return 2 * math.pi * self.radius
+
+#second shape class
+class Rectangle(Shape):
+
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    #override define of "=" sign 
+    def __eq__(self, other):
+        #if its not a rectangle then we will return false
+        if not isinstance(other, Rectangle):
+            return False
+        return self.width == other.width and self.length == other.length
+
+    
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return (self.length*2) + (self.width*2)
+    
